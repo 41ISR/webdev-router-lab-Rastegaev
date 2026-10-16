@@ -17,9 +17,9 @@ export default function Header() {
         </Link>
 
         <nav className="nav">
-          <Link to="/" className="nav-item">Главная</Link>
-          <Link to="/movies" className="nav-item">Фильмы</Link>
-          <Link to="/about" className="nav-item">О проекте</Link>
+          <NavLink to="/" className="nav-item">Главная</NavLink>
+          <NavLink to="/movies" className="nav-item">Фильмы</NavLink>
+          <NavLink to="/about" className="nav-item">О проекте</NavLink>
         </nav>
 
         <form className="search" onSubmit={handleSubmit}>

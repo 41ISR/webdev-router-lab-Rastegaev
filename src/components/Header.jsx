@@ -1,32 +1,31 @@
 import { useState } from 'react';
+import { Link,NavLink,useNavigate } from 'react-router-dom';
 
 export default function Header() {
-  const [query, setQuery] = useState('');
-
-  function handleSubmit(event) {
-    event.preventDefault();
+  const navigate = useNavigate()
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    navigate("/search?query=" + encodeURIComponent(e.target.query.value.trim()))
   }
 
   return (
     <header className="header">
       <div className="header-inner">
-        <a href="/" className="logo">
+        <Link to="/" className="logo">
           <span className="logo-icon">▶</span>
           <span>MovieBox</span>
-        </a>
+        </Link>
 
         <nav className="nav">
-          <a href="/" className="nav-item">Главная</a>
-          <a href="/movies" className="nav-item">Фильмы</a>
-          <a href="/about" className="nav-item">О проекте</a>
+          <NavLink to="/" className="nav-item">Главная</NavLink>
+          <NavLink to="/movies" className="nav-item">Фильмы</NavLink>
+          <NavLink to="/about" className="nav-item">О проекте</NavLink>
         </nav>
 
         <form className="search" onSubmit={handleSubmit}>
           <span className="search-icon">⌕</span>
           <input
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder="Поиск фильмов"
+            name="query" type="text" placeholder="Найти фильм..."
           />
         </form>
       </div>

@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Header() {
-  const [query, setQuery] = useState('');
-
-  function handleSubmit(event) {
-    event.preventDefault();
+  const navigate = useNavigate()
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    navigate("/search?query=" + encodeURIComponent(e.target.query.value.trim()))
   }
 
   return (
@@ -24,9 +25,7 @@ export default function Header() {
         <form className="search" onSubmit={handleSubmit}>
           <span className="search-icon">⌕</span>
           <input
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder="Поиск фильмов"
+            name="query" type="text" placeholder="Найти фильм..."
           />
         </form>
       </div>

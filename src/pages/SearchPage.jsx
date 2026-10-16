@@ -1,15 +1,17 @@
+import { useSearchParams } from 'react-router-dom';
 import MovieCard from '../components/MovieCard.jsx';
 import { movies } from '../data/movies.js';
 
 export default function SearchPage() {
-  const query = '';
+  const [searchParams] = useSearchParams()
+  const query = searchParams.get("query").trim() || ""
 
   const results = query
     ? movies.filter((movie) =>
-        `${movie.title} ${movie.originalTitle}`
-          .toLowerCase()
-          .includes(query.toLowerCase())
-      )
+      `${movie.title} ${movie.originalTitle}`
+        .toLowerCase()
+        .includes(query.toLowerCase())
+    )
     : [];
 
   return (

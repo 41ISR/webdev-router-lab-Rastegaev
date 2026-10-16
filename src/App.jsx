@@ -1,7 +1,7 @@
 import AboutPage from './pages/AboutPage.jsx';
 import SearchPage from './pages/SearchPage.jsx';
 import { Layout } from './components/Layout.jsx';
-
+  
 import HomePage from './pages/HomePage.jsx';
 import MoviePage from './pages/MoviePage.jsx';
 import MoviesPage from './pages/MoviesPage.jsx';
